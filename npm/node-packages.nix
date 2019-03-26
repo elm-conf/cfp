@@ -1124,4 +1124,21 @@ in
     production = true;
     bypassCache = true;
   };
+  "@graphile-contrib/pg-simplify-inflector-3.0.0" = nodeEnv.buildNodePackage {
+    name = "_at_graphile-contrib_slash_pg-simplify-inflector";
+    packageName = "@graphile-contrib/pg-simplify-inflector";
+    version = "3.0.0";
+    src = fetchurl {
+      url = "https://registry.npmjs.org/@graphile-contrib/pg-simplify-inflector/-/pg-simplify-inflector-3.0.0.tgz";
+      sha512 = "/3D75/BBJLftUBkidAsqGyfJEvzQqGQNJGIhoMwd3lB6a+UW9ofAC9A0h4a7o/mch8m9XZnYjy399ikwwsNE+g==";
+    };
+    buildInputs = globalBuildInputs;
+    meta = {
+      description = "Simplifies the graphile-build-pg inflector to trim the `ByFooIdAndBarId` from relations";
+      homepage = "https://github.com/graphile-contrib/pg-simplify-inflector#readme";
+      license = "MIT";
+    };
+    production = true;
+    bypassCache = true;
+  };
 }

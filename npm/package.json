@@ -1,0 +1,4 @@
+[
+    { "postgraphile": "4.3.3" },
+    { "@graphile-contrib/pg-simplify-inflector": "3.0.0" }
+]

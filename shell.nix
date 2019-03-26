@@ -7,7 +7,7 @@ with import (builtins.fetchTarball rec {
 }) {};
 
 let
-  npmTools = callPackage ./npm-tools { };
+  npm = callPackage ./npm { };
 in
   stdenv.mkDerivation {
     name = "cfp";
@@ -16,11 +16,13 @@ in
       git
       gnumake
       jq
-      nodePackages.node2nix
       postgresql100
       sqitchPg
 
-      # node2nix-versioned tools. Get full version string from npm-tools/package.json
-      npmTools."postgraphile-4.3.3"
+      # node stuff. Get exact versions by looking at npm/package.json
+      nodejs-8_x
+      nodePackages.node2nix
+      npm."@graphile-contrib/pg-simplify-inflector-3.0.0"
+      npm."postgraphile-4.3.3"
     ];
   }
