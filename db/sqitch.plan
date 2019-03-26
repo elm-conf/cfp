@@ -9,3 +9,4 @@ proposals_updated_at [proposals] 2019-03-26T11:10:11Z Brian Hicks <brian@noredin
 cfp_private 2019-03-26T21:43:53Z Brian Hicks <brian@noredink.com> # add schema for non-graphile-accessible cfp objects
 reviewer [cfp_public] 2019-03-26T21:50:12Z Brian Hicks <brian@noredink.com> # add reviewer table
 reviewer_account [cfp_private] 2019-03-26T21:53:18Z Brian Hicks <brian@noredink.com> # add reviewer account table
+pgcrypto 2019-03-26T21:56:40Z Brian Hicks <brian@noredink.com> # enable pgcrypto extension
