@@ -6,13 +6,21 @@ with import (builtins.fetchTarball rec {
   sha256 = "00aqc7am069vgmlg60v55hjahv7kkfkn9z6lwirqr1wzpcgll3v1";
 }) {};
 
-stdenv.mkDerivation {
-  name = "cfp";
-  buildInputs = [
-    foreman
-    git
-    nodePackages.node2nix
-    postgresql100
-    sqitchPg
-  ];
-}
+let
+  npmTools = callPackage ./npm-tools { };
+in
+  stdenv.mkDerivation {
+    name = "cfp";
+    buildInputs = [
+      foreman
+      git
+      gnumake
+      jq
+      nodePackages.node2nix
+      postgresql100
+      sqitchPg
+
+      # node2nix-versioned tools. Get full version string from npm-tools/package.json
+      npmTools."postgraphile-4.3.3"
+    ];
+  }
