@@ -2,3 +2,4 @@
 %project=cfp
 %uri=https://github.com/elm-conf/cfp
 
+cfp_public 2019-03-26T10:38:16Z Brian Hicks <brian@noredink.com> # add schema for graphile-accessible cfp objects
