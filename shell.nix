@@ -15,7 +15,6 @@ in
       foreman
       git
       gnumake
-      jq
       postgresql100
       sqitchPg
 
