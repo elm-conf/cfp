@@ -10,3 +10,4 @@ cfp_private 2019-03-26T21:43:53Z Brian Hicks <brian@noredink.com> # add schema f
 reviewer [cfp_public] 2019-03-26T21:50:12Z Brian Hicks <brian@noredink.com> # add reviewer table
 reviewer_account [cfp_private] 2019-03-26T21:53:18Z Brian Hicks <brian@noredink.com> # add reviewer account table
 pgcrypto 2019-03-26T21:56:40Z Brian Hicks <brian@noredink.com> # enable pgcrypto extension
+register_reviewer 2019-03-26T21:59:28Z Brian Hicks <brian@noredink.com> # function to register a reviewer
