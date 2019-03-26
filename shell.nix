@@ -9,6 +9,10 @@ with import (builtins.fetchTarball rec {
 stdenv.mkDerivation {
   name = "cfp";
   buildInputs = [
+    foreman
     git
+    nodePackages.node2nix
+    postgresql100
+    sqitchPg
   ];
 }
