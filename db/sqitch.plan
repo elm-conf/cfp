@@ -4,3 +4,4 @@
 
 cfp_public 2019-03-26T10:38:16Z Brian Hicks <brian@noredink.com> # add schema for graphile-accessible cfp objects
 uuid_ossp [cfp_public] 2019-03-26T10:48:55Z Brian Hicks <brian@noredink.com> # enable uuid-ossp
+proposals [cfp_public uuid_ossp] 2019-03-26T10:55:21Z Brian Hicks <brian@noredink.com> # add proposals table
