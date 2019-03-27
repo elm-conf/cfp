@@ -13,9 +13,9 @@ CREATE FUNCTION cfp_public.authenticate(
 DECLARE
   account cfp_private.reviewer_account;
 BEGIN
-  SELECT * INTO account
-    FROM cfp_private.reviewer_account
-   WHERE email = $1;
+  SELECT a.* INTO account
+    FROM cfp_private.reviewer_account as a
+   WHERE a.email = $1;
 
   IF account.password_hash = crypt(password, account.password_hash) THEN
     RETURN ('cfp_reviewer', account.reviewer_id)::cfp_public.jwt_token;
