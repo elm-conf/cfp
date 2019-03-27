@@ -12,3 +12,4 @@ trap finish EXIT
 # now create the database
 sleep 1
 createdb -e cfp
+psql -d cfp -c "CREATE ROLE postgraphile LOGIN PASSWORD 'dev';"

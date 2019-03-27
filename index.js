@@ -3,7 +3,7 @@ const { postgraphile } = require("postgraphile");
 
 const graphiql = process.env.NODE_ENV !== "production";
 const server = postgraphile(
-  process.env.DATABASE_URL || "cfp",
+  process.env.DATABASE_URL || "postgres://postgraphile:dev@localhost/cfp",
   process.env.SCHEMA_NAME || "cfp_public",
   {
     watchPg: true,
