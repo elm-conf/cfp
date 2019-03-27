@@ -13,3 +13,4 @@ trap finish EXIT
 sleep 1
 createdb -e cfp
 psql -d cfp -c "CREATE ROLE postgraphile LOGIN PASSWORD 'dev';"
+psql -d cfp -c "ALTER USER postgraphile WITH SUPERUSER;"
