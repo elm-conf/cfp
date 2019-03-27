@@ -12,3 +12,4 @@ reviewer_account [cfp_private] 2019-03-26T21:53:18Z Brian Hicks <brian@noredink.
 pgcrypto 2019-03-26T21:56:40Z Brian Hicks <brian@noredink.com> # enable pgcrypto extension
 register_reviewer 2019-03-26T21:59:28Z Brian Hicks <brian@noredink.com> # function to register a reviewer
 cfp_anonymous 2019-03-26T22:13:56Z Brian Hicks <brian@noredink.com> # add anonymous role
+cfp_reviewer 2019-03-27T03:14:26Z Brian Hicks <brian@noredink.com> # add reviewer role
