@@ -14,3 +14,4 @@ register_reviewer 2019-03-26T21:59:28Z Brian Hicks <brian@noredink.com> # functi
 cfp_anonymous 2019-03-26T22:13:56Z Brian Hicks <brian@noredink.com> # add anonymous role
 cfp_reviewer 2019-03-27T03:14:26Z Brian Hicks <brian@noredink.com> # add reviewer role
 jwt_token [cfp_public] 2019-03-27T03:31:23Z Brian Hicks <brian@noredink.com> # add jwt token type
+authenticate [cfp_public cfp_anonymous cfp_reviewer jwt_token] 2019-03-27T03:34:40Z Brian Hicks <brian@noredink.com> # add authenticate function
