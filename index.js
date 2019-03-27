@@ -11,9 +11,9 @@ const server = postgraphile(
     ],
 
     // security
-    defaultRole: 'cfp_anonymous',
-    secret: process.env.JWT_SECRET || 'super bad dev secret',
-    token: 'cfp_public.jwt_token',
+    pgDefaultRole: 'cfp_anonymous',
+    jwtSecret: process.env.JWT_SECRET || 'super bad dev secret',
+    jwtPgTypeIdentifier: 'cfp_public.jwt_token',
 
     // deveopment
     watchPg: true,
