@@ -2,7 +2,7 @@
 -- https://github.com/dillonkearns/elm-graphql
 
 
-module Api.InputObject exposing (CreateUserInput, CreateUserInputOptionalFields, CreateUserInputRequiredFields, CurrentUserIsReviewerInput, CurrentUserIsReviewerInputOptionalFields, DeleteUserByIdInput, DeleteUserByIdInputOptionalFields, DeleteUserByIdInputRequiredFields, DeleteUserInput, DeleteUserInputOptionalFields, DeleteUserInputRequiredFields, RegisterInput, RegisterInputOptionalFields, RegisterInputRequiredFields, UpdateUserByIdInput, UpdateUserByIdInputOptionalFields, UpdateUserByIdInputRequiredFields, UpdateUserInput, UpdateUserInputOptionalFields, UpdateUserInputRequiredFields, UserCondition, UserConditionOptionalFields, UserInput, UserInputOptionalFields, UserInputRequiredFields, UserPatch, UserPatchOptionalFields, buildCreateUserInput, buildCurrentUserIsReviewerInput, buildDeleteUserByIdInput, buildDeleteUserInput, buildRegisterInput, buildUpdateUserByIdInput, buildUpdateUserInput, buildUserCondition, buildUserInput, buildUserPatch, encodeCreateUserInput, encodeCurrentUserIsReviewerInput, encodeDeleteUserByIdInput, encodeDeleteUserInput, encodeRegisterInput, encodeUpdateUserByIdInput, encodeUpdateUserInput, encodeUserCondition, encodeUserInput, encodeUserPatch)
+module Api.InputObject exposing (CreateUserInput, CreateUserInputOptionalFields, CreateUserInputRequiredFields, DeleteUserByIdInput, DeleteUserByIdInputOptionalFields, DeleteUserByIdInputRequiredFields, DeleteUserInput, DeleteUserInputOptionalFields, DeleteUserInputRequiredFields, RegisterInput, RegisterInputOptionalFields, RegisterInputRequiredFields, UpdateUserByIdInput, UpdateUserByIdInputOptionalFields, UpdateUserByIdInputRequiredFields, UpdateUserInput, UpdateUserInputOptionalFields, UpdateUserInputRequiredFields, UserCondition, UserConditionOptionalFields, UserInput, UserInputOptionalFields, UserInputRequiredFields, UserPatch, UserPatchOptionalFields, buildCreateUserInput, buildDeleteUserByIdInput, buildDeleteUserInput, buildRegisterInput, buildUpdateUserByIdInput, buildUpdateUserInput, buildUserCondition, buildUserInput, buildUserPatch, encodeCreateUserInput, encodeDeleteUserByIdInput, encodeDeleteUserInput, encodeRegisterInput, encodeUpdateUserByIdInput, encodeUpdateUserInput, encodeUserCondition, encodeUserInput, encodeUserPatch)
 
 import Api.Interface
 import Api.Object
@@ -49,34 +49,6 @@ encodeCreateUserInput : CreateUserInput -> Value
 encodeCreateUserInput input =
     Encode.maybeObject
         [ ( "clientMutationId", Encode.string |> Encode.optional input.clientMutationId ), ( "user", encodeUserInput input.user |> Just ) ]
-
-
-buildCurrentUserIsReviewerInput : (CurrentUserIsReviewerInputOptionalFields -> CurrentUserIsReviewerInputOptionalFields) -> CurrentUserIsReviewerInput
-buildCurrentUserIsReviewerInput fillOptionals =
-    let
-        optionals =
-            fillOptionals
-                { clientMutationId = Absent }
-    in
-    { clientMutationId = optionals.clientMutationId }
-
-
-type alias CurrentUserIsReviewerInputOptionalFields =
-    { clientMutationId : OptionalArgument String }
-
-
-{-| Type for the CurrentUserIsReviewerInput input object.
--}
-type alias CurrentUserIsReviewerInput =
-    { clientMutationId : OptionalArgument String }
-
-
-{-| Encode a CurrentUserIsReviewerInput into a value that can be used as an argument.
--}
-encodeCurrentUserIsReviewerInput : CurrentUserIsReviewerInput -> Value
-encodeCurrentUserIsReviewerInput input =
-    Encode.maybeObject
-        [ ( "clientMutationId", Encode.string |> Encode.optional input.clientMutationId ) ]
 
 
 buildDeleteUserByIdInput : DeleteUserByIdInputRequiredFields -> (DeleteUserByIdInputOptionalFields -> DeleteUserByIdInputOptionalFields) -> DeleteUserByIdInput

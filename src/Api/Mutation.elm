@@ -2,7 +2,7 @@
 -- https://github.com/dillonkearns/elm-graphql
 
 
-module Api.Mutation exposing (CreateUserRequiredArguments, CurrentUserIsReviewerRequiredArguments, DeleteUserByIdRequiredArguments, DeleteUserRequiredArguments, RegisterRequiredArguments, UpdateUserByIdRequiredArguments, UpdateUserRequiredArguments, createUser, currentUserIsReviewer, deleteUser, deleteUserById, register, updateUser, updateUserById)
+module Api.Mutation exposing (CreateUserRequiredArguments, DeleteUserByIdRequiredArguments, DeleteUserRequiredArguments, RegisterRequiredArguments, UpdateUserByIdRequiredArguments, UpdateUserRequiredArguments, createUser, deleteUser, deleteUserById, register, updateUser, updateUserById)
 
 import Api.InputObject
 import Api.Interface
@@ -87,20 +87,6 @@ type alias DeleteUserByIdRequiredArguments =
 deleteUserById : DeleteUserByIdRequiredArguments -> SelectionSet decodesTo Api.Object.DeleteUserPayload -> SelectionSet (Maybe decodesTo) RootMutation
 deleteUserById requiredArgs object_ =
     Object.selectionForCompositeField "deleteUserById" [ Argument.required "input" requiredArgs.input Api.InputObject.encodeDeleteUserByIdInput ] object_ (identity >> Decode.nullable)
-
-
-type alias CurrentUserIsReviewerRequiredArguments =
-    { input : Api.InputObject.CurrentUserIsReviewerInput }
-
-
-{-|
-
-  - input - The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
-
--}
-currentUserIsReviewer : CurrentUserIsReviewerRequiredArguments -> SelectionSet decodesTo Api.Object.CurrentUserIsReviewerPayload -> SelectionSet (Maybe decodesTo) RootMutation
-currentUserIsReviewer requiredArgs object_ =
-    Object.selectionForCompositeField "currentUserIsReviewer" [ Argument.required "input" requiredArgs.input Api.InputObject.encodeCurrentUserIsReviewerInput ] object_ (identity >> Decode.nullable)
 
 
 type alias RegisterRequiredArguments =
