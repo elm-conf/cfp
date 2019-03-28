@@ -2,7 +2,7 @@
 -- https://github.com/dillonkearns/elm-graphql
 
 
-module Api.InputObject exposing (CreateUserInput, CreateUserInputOptionalFields, CreateUserInputRequiredFields, DeleteUserByIdInput, DeleteUserByIdInputOptionalFields, DeleteUserByIdInputRequiredFields, DeleteUserInput, DeleteUserInputOptionalFields, DeleteUserInputRequiredFields, RegisterInput, RegisterInputOptionalFields, RegisterInputRequiredFields, UpdateUserByIdInput, UpdateUserByIdInputOptionalFields, UpdateUserByIdInputRequiredFields, UpdateUserInput, UpdateUserInputOptionalFields, UpdateUserInputRequiredFields, UserCondition, UserConditionOptionalFields, UserInput, UserInputOptionalFields, UserInputRequiredFields, UserPatch, UserPatchOptionalFields, buildCreateUserInput, buildDeleteUserByIdInput, buildDeleteUserInput, buildRegisterInput, buildUpdateUserByIdInput, buildUpdateUserInput, buildUserCondition, buildUserInput, buildUserPatch, encodeCreateUserInput, encodeDeleteUserByIdInput, encodeDeleteUserInput, encodeRegisterInput, encodeUpdateUserByIdInput, encodeUpdateUserInput, encodeUserCondition, encodeUserInput, encodeUserPatch)
+module Api.InputObject exposing (AuthenticateInput, AuthenticateInputOptionalFields, AuthenticateInputRequiredFields, CreateUserInput, CreateUserInputOptionalFields, CreateUserInputRequiredFields, DeleteUserByIdInput, DeleteUserByIdInputOptionalFields, DeleteUserByIdInputRequiredFields, DeleteUserInput, DeleteUserInputOptionalFields, DeleteUserInputRequiredFields, RegisterInput, RegisterInputOptionalFields, RegisterInputRequiredFields, UpdateUserByIdInput, UpdateUserByIdInputOptionalFields, UpdateUserByIdInputRequiredFields, UpdateUserInput, UpdateUserInputOptionalFields, UpdateUserInputRequiredFields, UserCondition, UserConditionOptionalFields, UserInput, UserInputOptionalFields, UserInputRequiredFields, UserPatch, UserPatchOptionalFields, buildAuthenticateInput, buildCreateUserInput, buildDeleteUserByIdInput, buildDeleteUserInput, buildRegisterInput, buildUpdateUserByIdInput, buildUpdateUserInput, buildUserCondition, buildUserInput, buildUserPatch, encodeAuthenticateInput, encodeCreateUserInput, encodeDeleteUserByIdInput, encodeDeleteUserInput, encodeRegisterInput, encodeUpdateUserByIdInput, encodeUpdateUserInput, encodeUserCondition, encodeUserInput, encodeUserPatch)
 
 import Api.Interface
 import Api.Object
@@ -15,6 +15,43 @@ import Graphql.Internal.Encode as Encode exposing (Value)
 import Graphql.OptionalArgument exposing (OptionalArgument(..))
 import Graphql.SelectionSet exposing (SelectionSet)
 import Json.Decode as Decode
+
+
+buildAuthenticateInput : AuthenticateInputRequiredFields -> (AuthenticateInputOptionalFields -> AuthenticateInputOptionalFields) -> AuthenticateInput
+buildAuthenticateInput required fillOptionals =
+    let
+        optionals =
+            fillOptionals
+                { clientMutationId = Absent }
+    in
+    { clientMutationId = optionals.clientMutationId, email = required.email, password = required.password }
+
+
+type alias AuthenticateInputRequiredFields =
+    { email : String
+    , password : String
+    }
+
+
+type alias AuthenticateInputOptionalFields =
+    { clientMutationId : OptionalArgument String }
+
+
+{-| Type for the AuthenticateInput input object.
+-}
+type alias AuthenticateInput =
+    { clientMutationId : OptionalArgument String
+    , email : String
+    , password : String
+    }
+
+
+{-| Encode a AuthenticateInput into a value that can be used as an argument.
+-}
+encodeAuthenticateInput : AuthenticateInput -> Value
+encodeAuthenticateInput input =
+    Encode.maybeObject
+        [ ( "clientMutationId", Encode.string |> Encode.optional input.clientMutationId ), ( "email", Encode.string input.email |> Just ), ( "password", Encode.string input.password |> Just ) ]
 
 
 buildCreateUserInput : CreateUserInputRequiredFields -> (CreateUserInputOptionalFields -> CreateUserInputOptionalFields) -> CreateUserInput

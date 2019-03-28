@@ -2,7 +2,7 @@
 -- https://github.com/dillonkearns/elm-graphql
 
 
-module Api.ScalarCodecs exposing (Cursor, Id, codecs)
+module Api.ScalarCodecs exposing (Cursor, Id, JwtToken, codecs)
 
 import Api.Scalar exposing (defaultCodecs)
 import Json.Decode as Decode exposing (Decoder)
@@ -16,9 +16,14 @@ type alias Id =
     Api.Scalar.Id
 
 
-codecs : Api.Scalar.Codecs Cursor Id
+type alias JwtToken =
+    Api.Scalar.JwtToken
+
+
+codecs : Api.Scalar.Codecs Cursor Id JwtToken
 codecs =
     Api.Scalar.defineCodecs
         { codecCursor = defaultCodecs.codecCursor
         , codecId = defaultCodecs.codecId
+        , codecJwtToken = defaultCodecs.codecJwtToken
         }

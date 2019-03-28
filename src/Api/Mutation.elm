@@ -2,7 +2,7 @@
 -- https://github.com/dillonkearns/elm-graphql
 
 
-module Api.Mutation exposing (CreateUserRequiredArguments, DeleteUserByIdRequiredArguments, DeleteUserRequiredArguments, RegisterRequiredArguments, UpdateUserByIdRequiredArguments, UpdateUserRequiredArguments, createUser, deleteUser, deleteUserById, register, updateUser, updateUserById)
+module Api.Mutation exposing (AuthenticateRequiredArguments, CreateUserRequiredArguments, DeleteUserByIdRequiredArguments, DeleteUserRequiredArguments, RegisterRequiredArguments, UpdateUserByIdRequiredArguments, UpdateUserRequiredArguments, authenticate, createUser, deleteUser, deleteUserById, register, updateUser, updateUserById)
 
 import Api.InputObject
 import Api.Interface
@@ -87,6 +87,20 @@ type alias DeleteUserByIdRequiredArguments =
 deleteUserById : DeleteUserByIdRequiredArguments -> SelectionSet decodesTo Api.Object.DeleteUserPayload -> SelectionSet (Maybe decodesTo) RootMutation
 deleteUserById requiredArgs object_ =
     Object.selectionForCompositeField "deleteUserById" [ Argument.required "input" requiredArgs.input Api.InputObject.encodeDeleteUserByIdInput ] object_ (identity >> Decode.nullable)
+
+
+type alias AuthenticateRequiredArguments =
+    { input : Api.InputObject.AuthenticateInput }
+
+
+{-| Creates a JWT token that will identify further calls.
+
+  - input - The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+
+-}
+authenticate : AuthenticateRequiredArguments -> SelectionSet decodesTo Api.Object.AuthenticatePayload -> SelectionSet (Maybe decodesTo) RootMutation
+authenticate requiredArgs object_ =
+    Object.selectionForCompositeField "authenticate" [ Argument.required "input" requiredArgs.input Api.InputObject.encodeAuthenticateInput ] object_ (identity >> Decode.nullable)
 
 
 type alias RegisterRequiredArguments =
