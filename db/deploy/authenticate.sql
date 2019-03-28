@@ -9,13 +9,18 @@ CREATE FUNCTION cfp.authenticate(
 ) RETURNS cfp.jwt_token AS $$
 DECLARE
   account cfp_private.user_account;
+  user_ cfp.user;
 BEGIN
   SELECT a.* INTO account
-    FROM cfp_private.user_account as a
+    FROM cfp_private.user_account AS a
    WHERE a.email = $1;
 
+  SELECT u.* INTO user_
+    FROM cfp.user AS u
+   WHERE u.id = account.user_id;
+
   IF account.password_hash = crypt(password, account.password_hash) THEN
-    RETURN ('user', account.user_id, account.is_reviewer)::cfp.jwt_token;
+    RETURN ('user', account.user_id, user_.is_reviewer)::cfp.jwt_token;
   ELSE
     RETURN NULL;
   END IF;
