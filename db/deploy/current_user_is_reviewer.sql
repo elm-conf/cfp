@@ -4,7 +4,7 @@
 BEGIN;
 
 CREATE FUNCTION cfp.current_user_is_reviewer() RETURNS BOOL as $$
-  SELECT nullif(current_setting('jwt.claims.user_id', true), '')::BOOL;
+  SELECT nullif(current_setting('jwt.claims.is_reviewer', true), '')::BOOL;
 $$ LANGUAGE sql STRICT;
 
 COMMENT ON FUNCTION cfp.current_user_is_reviewer() IS '@omit';
