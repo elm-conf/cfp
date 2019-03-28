@@ -20,7 +20,7 @@ BEGIN
    WHERE u.id = account.user_id;
 
   IF account.password_hash = crypt(password, account.password_hash) THEN
-    RETURN ('user', account.user_id, user_.is_reviewer)::cfp.jwt_token;
+    RETURN ('cfp_user', account.user_id, user_.is_reviewer)::cfp.jwt_token;
   ELSE
     RETURN NULL;
   END IF;
