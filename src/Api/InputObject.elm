@@ -2,7 +2,7 @@
 -- https://github.com/dillonkearns/elm-graphql
 
 
-module Api.InputObject exposing (AuthenticateInput, AuthenticateInputOptionalFields, AuthenticateInputRequiredFields, CreateUserInput, CreateUserInputOptionalFields, CreateUserInputRequiredFields, DeleteUserByIdInput, DeleteUserByIdInputOptionalFields, DeleteUserByIdInputRequiredFields, DeleteUserInput, DeleteUserInputOptionalFields, DeleteUserInputRequiredFields, RegisterInput, RegisterInputOptionalFields, RegisterInputRequiredFields, UpdateUserByIdInput, UpdateUserByIdInputOptionalFields, UpdateUserByIdInputRequiredFields, UpdateUserInput, UpdateUserInputOptionalFields, UpdateUserInputRequiredFields, UserCondition, UserConditionOptionalFields, UserInput, UserInputOptionalFields, UserInputRequiredFields, UserPatch, UserPatchOptionalFields, buildAuthenticateInput, buildCreateUserInput, buildDeleteUserByIdInput, buildDeleteUserInput, buildRegisterInput, buildUpdateUserByIdInput, buildUpdateUserInput, buildUserCondition, buildUserInput, buildUserPatch, encodeAuthenticateInput, encodeCreateUserInput, encodeDeleteUserByIdInput, encodeDeleteUserInput, encodeRegisterInput, encodeUpdateUserByIdInput, encodeUpdateUserInput, encodeUserCondition, encodeUserInput, encodeUserPatch)
+module Api.InputObject exposing (AuthenticateInput, AuthenticateInputOptionalFields, AuthenticateInputRequiredFields, RegisterInput, RegisterInputOptionalFields, RegisterInputRequiredFields, UpdateUserByIdInput, UpdateUserByIdInputOptionalFields, UpdateUserByIdInputRequiredFields, UpdateUserInput, UpdateUserInputOptionalFields, UpdateUserInputRequiredFields, UserCondition, UserConditionOptionalFields, UserPatch, UserPatchOptionalFields, buildAuthenticateInput, buildRegisterInput, buildUpdateUserByIdInput, buildUpdateUserInput, buildUserCondition, buildUserPatch, encodeAuthenticateInput, encodeRegisterInput, encodeUpdateUserByIdInput, encodeUpdateUserInput, encodeUserCondition, encodeUserPatch)
 
 import Api.Interface
 import Api.Object
@@ -52,108 +52,6 @@ encodeAuthenticateInput : AuthenticateInput -> Value
 encodeAuthenticateInput input =
     Encode.maybeObject
         [ ( "clientMutationId", Encode.string |> Encode.optional input.clientMutationId ), ( "email", Encode.string input.email |> Just ), ( "password", Encode.string input.password |> Just ) ]
-
-
-buildCreateUserInput : CreateUserInputRequiredFields -> (CreateUserInputOptionalFields -> CreateUserInputOptionalFields) -> CreateUserInput
-buildCreateUserInput required fillOptionals =
-    let
-        optionals =
-            fillOptionals
-                { clientMutationId = Absent }
-    in
-    { clientMutationId = optionals.clientMutationId, user = required.user }
-
-
-type alias CreateUserInputRequiredFields =
-    { user : UserInput }
-
-
-type alias CreateUserInputOptionalFields =
-    { clientMutationId : OptionalArgument String }
-
-
-{-| Type for the CreateUserInput input object.
--}
-type alias CreateUserInput =
-    { clientMutationId : OptionalArgument String
-    , user : UserInput
-    }
-
-
-{-| Encode a CreateUserInput into a value that can be used as an argument.
--}
-encodeCreateUserInput : CreateUserInput -> Value
-encodeCreateUserInput input =
-    Encode.maybeObject
-        [ ( "clientMutationId", Encode.string |> Encode.optional input.clientMutationId ), ( "user", encodeUserInput input.user |> Just ) ]
-
-
-buildDeleteUserByIdInput : DeleteUserByIdInputRequiredFields -> (DeleteUserByIdInputOptionalFields -> DeleteUserByIdInputOptionalFields) -> DeleteUserByIdInput
-buildDeleteUserByIdInput required fillOptionals =
-    let
-        optionals =
-            fillOptionals
-                { clientMutationId = Absent }
-    in
-    { clientMutationId = optionals.clientMutationId, id = required.id }
-
-
-type alias DeleteUserByIdInputRequiredFields =
-    { id : Int }
-
-
-type alias DeleteUserByIdInputOptionalFields =
-    { clientMutationId : OptionalArgument String }
-
-
-{-| Type for the DeleteUserByIdInput input object.
--}
-type alias DeleteUserByIdInput =
-    { clientMutationId : OptionalArgument String
-    , id : Int
-    }
-
-
-{-| Encode a DeleteUserByIdInput into a value that can be used as an argument.
--}
-encodeDeleteUserByIdInput : DeleteUserByIdInput -> Value
-encodeDeleteUserByIdInput input =
-    Encode.maybeObject
-        [ ( "clientMutationId", Encode.string |> Encode.optional input.clientMutationId ), ( "id", Encode.int input.id |> Just ) ]
-
-
-buildDeleteUserInput : DeleteUserInputRequiredFields -> (DeleteUserInputOptionalFields -> DeleteUserInputOptionalFields) -> DeleteUserInput
-buildDeleteUserInput required fillOptionals =
-    let
-        optionals =
-            fillOptionals
-                { clientMutationId = Absent }
-    in
-    { clientMutationId = optionals.clientMutationId, nodeId = required.nodeId }
-
-
-type alias DeleteUserInputRequiredFields =
-    { nodeId : Api.ScalarCodecs.Id }
-
-
-type alias DeleteUserInputOptionalFields =
-    { clientMutationId : OptionalArgument String }
-
-
-{-| Type for the DeleteUserInput input object.
--}
-type alias DeleteUserInput =
-    { clientMutationId : OptionalArgument String
-    , nodeId : Api.ScalarCodecs.Id
-    }
-
-
-{-| Encode a DeleteUserInput into a value that can be used as an argument.
--}
-encodeDeleteUserInput : DeleteUserInput -> Value
-encodeDeleteUserInput input =
-    Encode.maybeObject
-        [ ( "clientMutationId", Encode.string |> Encode.optional input.clientMutationId ), ( "nodeId", (Api.ScalarCodecs.codecs |> Api.Scalar.unwrapEncoder .codecId) input.nodeId |> Just ) ]
 
 
 buildRegisterInput : RegisterInputRequiredFields -> (RegisterInputOptionalFields -> RegisterInputOptionalFields) -> RegisterInput
@@ -295,43 +193,6 @@ encodeUserCondition : UserCondition -> Value
 encodeUserCondition input =
     Encode.maybeObject
         [ ( "id", Encode.int |> Encode.optional input.id ) ]
-
-
-buildUserInput : UserInputRequiredFields -> (UserInputOptionalFields -> UserInputOptionalFields) -> UserInput
-buildUserInput required fillOptionals =
-    let
-        optionals =
-            fillOptionals
-                { id = Absent, isReviewer = Absent }
-    in
-    { id = optionals.id, name = required.name, isReviewer = optionals.isReviewer }
-
-
-type alias UserInputRequiredFields =
-    { name : String }
-
-
-type alias UserInputOptionalFields =
-    { id : OptionalArgument Int
-    , isReviewer : OptionalArgument Bool
-    }
-
-
-{-| Type for the UserInput input object.
--}
-type alias UserInput =
-    { id : OptionalArgument Int
-    , name : String
-    , isReviewer : OptionalArgument Bool
-    }
-
-
-{-| Encode a UserInput into a value that can be used as an argument.
--}
-encodeUserInput : UserInput -> Value
-encodeUserInput input =
-    Encode.maybeObject
-        [ ( "id", Encode.int |> Encode.optional input.id ), ( "name", Encode.string input.name |> Just ), ( "isReviewer", Encode.bool |> Encode.optional input.isReviewer ) ]
 
 
 buildUserPatch : (UserPatchOptionalFields -> UserPatchOptionalFields) -> UserPatch

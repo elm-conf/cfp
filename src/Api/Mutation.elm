@@ -2,7 +2,7 @@
 -- https://github.com/dillonkearns/elm-graphql
 
 
-module Api.Mutation exposing (AuthenticateRequiredArguments, CreateUserRequiredArguments, DeleteUserByIdRequiredArguments, DeleteUserRequiredArguments, RegisterRequiredArguments, UpdateUserByIdRequiredArguments, UpdateUserRequiredArguments, authenticate, createUser, deleteUser, deleteUserById, register, updateUser, updateUserById)
+module Api.Mutation exposing (AuthenticateRequiredArguments, RegisterRequiredArguments, UpdateUserByIdRequiredArguments, UpdateUserRequiredArguments, authenticate, register, updateUser, updateUserById)
 
 import Api.InputObject
 import Api.Interface
@@ -17,20 +17,6 @@ import Graphql.Operation exposing (RootMutation, RootQuery, RootSubscription)
 import Graphql.OptionalArgument exposing (OptionalArgument(..))
 import Graphql.SelectionSet exposing (SelectionSet)
 import Json.Decode as Decode exposing (Decoder)
-
-
-type alias CreateUserRequiredArguments =
-    { input : Api.InputObject.CreateUserInput }
-
-
-{-| Creates a single `User`.
-
-  - input - The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
-
--}
-createUser : CreateUserRequiredArguments -> SelectionSet decodesTo Api.Object.CreateUserPayload -> SelectionSet (Maybe decodesTo) RootMutation
-createUser requiredArgs object_ =
-    Object.selectionForCompositeField "createUser" [ Argument.required "input" requiredArgs.input Api.InputObject.encodeCreateUserInput ] object_ (identity >> Decode.nullable)
 
 
 type alias UpdateUserRequiredArguments =
@@ -59,34 +45,6 @@ type alias UpdateUserByIdRequiredArguments =
 updateUserById : UpdateUserByIdRequiredArguments -> SelectionSet decodesTo Api.Object.UpdateUserPayload -> SelectionSet (Maybe decodesTo) RootMutation
 updateUserById requiredArgs object_ =
     Object.selectionForCompositeField "updateUserById" [ Argument.required "input" requiredArgs.input Api.InputObject.encodeUpdateUserByIdInput ] object_ (identity >> Decode.nullable)
-
-
-type alias DeleteUserRequiredArguments =
-    { input : Api.InputObject.DeleteUserInput }
-
-
-{-| Deletes a single `User` using its globally unique id.
-
-  - input - The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
-
--}
-deleteUser : DeleteUserRequiredArguments -> SelectionSet decodesTo Api.Object.DeleteUserPayload -> SelectionSet (Maybe decodesTo) RootMutation
-deleteUser requiredArgs object_ =
-    Object.selectionForCompositeField "deleteUser" [ Argument.required "input" requiredArgs.input Api.InputObject.encodeDeleteUserInput ] object_ (identity >> Decode.nullable)
-
-
-type alias DeleteUserByIdRequiredArguments =
-    { input : Api.InputObject.DeleteUserByIdInput }
-
-
-{-| Deletes a single `User` using a unique key.
-
-  - input - The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
-
--}
-deleteUserById : DeleteUserByIdRequiredArguments -> SelectionSet decodesTo Api.Object.DeleteUserPayload -> SelectionSet (Maybe decodesTo) RootMutation
-deleteUserById requiredArgs object_ =
-    Object.selectionForCompositeField "deleteUserById" [ Argument.required "input" requiredArgs.input Api.InputObject.encodeDeleteUserByIdInput ] object_ (identity >> Decode.nullable)
 
 
 type alias AuthenticateRequiredArguments =

@@ -12,6 +12,8 @@ CREATE TABLE cfp.user(
   is_reviewer BOOL NOT NULL DEFAULT FALSE
 );
 
+COMMENT ON TABLE cfp.user IS '@omit create,delete';
+
 ALTER TABLE cfp.user ENABLE ROW LEVEL SECURITY;
 
 GRANT SELECT ON TABLE cfp.user TO cfp_user;
