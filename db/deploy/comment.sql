@@ -7,8 +7,11 @@ BEGIN;
 
 CREATE TABLE cfp_public.comment(
   id SERIAL PRIMARY KEY,
+
   proposal_id UUID NOT NULL REFERENCES cfp_public.proposals(id) ON DELETE CASCADE,
   reviewer_id INTEGER NOT NULL REFERENCES cfp_public.reviewer(id),
+
+  content TEXT NOT NULL,
 
   created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
   updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now()
@@ -21,6 +24,11 @@ ALTER TABLE cfp_public.comment ENABLE ROW LEVEL SECURITY;
 CREATE TRIGGER update_cfp_public_comment_updated_at
 BEFORE UPDATE ON cfp_public.comment
 FOR EACH ROW EXECUTE PROCEDURE cfp_public.set_updated_at();
+
+-- indexes
+
+CREATE INDEX idx_comment_proposal_id ON cfp_public.comment(proposal_id);
+CREATE INDEX idx_comment_reviewer_id ON cfp_public.comment(reviewer_id);
 
 -- nothing for anonymous role!
 

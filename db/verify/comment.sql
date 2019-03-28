@@ -2,7 +2,7 @@
 
 BEGIN;
 
-SELECT id, proposal_id, reviewer_id, created_at, updated_at
+SELECT id, proposal_id, reviewer_id, content, created_at, updated_at
   FROM cfp_public.comment
  WHERE FALSE;
 
