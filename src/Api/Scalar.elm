@@ -2,7 +2,7 @@
 -- https://github.com/dillonkearns/elm-graphql
 
 
-module Api.Scalar exposing (Codecs, Cursor(..), Id(..), JwtToken(..), defaultCodecs, defineCodecs, unwrapCodecs, unwrapEncoder)
+module Api.Scalar exposing (Codecs, Cursor(..), Datetime(..), Id(..), JwtToken(..), defaultCodecs, defineCodecs, unwrapCodecs, unwrapEncoder)
 
 import Graphql.Codec exposing (Codec)
 import Graphql.Internal.Builder.Object as Object
@@ -15,6 +15,10 @@ type Cursor
     = Cursor String
 
 
+type Datetime
+    = Datetime String
+
+
 type Id
     = Id String
 
@@ -25,18 +29,20 @@ type JwtToken
 
 defineCodecs :
     { codecCursor : Codec valueCursor
+    , codecDatetime : Codec valueDatetime
     , codecId : Codec valueId
     , codecJwtToken : Codec valueJwtToken
     }
-    -> Codecs valueCursor valueId valueJwtToken
+    -> Codecs valueCursor valueDatetime valueId valueJwtToken
 defineCodecs definitions =
     Codecs definitions
 
 
 unwrapCodecs :
-    Codecs valueCursor valueId valueJwtToken
+    Codecs valueCursor valueDatetime valueId valueJwtToken
     ->
         { codecCursor : Codec valueCursor
+        , codecDatetime : Codec valueDatetime
         , codecId : Codec valueId
         , codecJwtToken : Codec valueJwtToken
         }
@@ -48,22 +54,27 @@ unwrapEncoder getter (Codecs unwrappedCodecs) =
     (unwrappedCodecs |> getter |> .encoder) >> Graphql.Internal.Encode.fromJson
 
 
-type Codecs valueCursor valueId valueJwtToken
-    = Codecs (RawCodecs valueCursor valueId valueJwtToken)
+type Codecs valueCursor valueDatetime valueId valueJwtToken
+    = Codecs (RawCodecs valueCursor valueDatetime valueId valueJwtToken)
 
 
-type alias RawCodecs valueCursor valueId valueJwtToken =
+type alias RawCodecs valueCursor valueDatetime valueId valueJwtToken =
     { codecCursor : Codec valueCursor
+    , codecDatetime : Codec valueDatetime
     , codecId : Codec valueId
     , codecJwtToken : Codec valueJwtToken
     }
 
 
-defaultCodecs : RawCodecs Cursor Id JwtToken
+defaultCodecs : RawCodecs Cursor Datetime Id JwtToken
 defaultCodecs =
     { codecCursor =
         { encoder = \(Cursor raw) -> Encode.string raw
         , decoder = Object.scalarDecoder |> Decode.map Cursor
+        }
+    , codecDatetime =
+        { encoder = \(Datetime raw) -> Encode.string raw
+        , decoder = Object.scalarDecoder |> Decode.map Datetime
         }
     , codecId =
         { encoder = \(Id raw) -> Encode.string raw

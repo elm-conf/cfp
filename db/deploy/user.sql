@@ -3,18 +3,30 @@
 -- requires: current_user_id
 -- requires: cfp_anonymous
 -- requires: cfp_user
+-- requires: set_updated_at
 
 BEGIN;
 
 CREATE TABLE cfp.user(
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
-  is_reviewer BOOL NOT NULL DEFAULT FALSE
+  is_reviewer BOOL NOT NULL DEFAULT FALSE,
+
+  created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
+  updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now()
 );
 
 COMMENT ON TABLE cfp.user IS '@omit create,delete';
 
 ALTER TABLE cfp.user ENABLE ROW LEVEL SECURITY;
+
+-- triggers
+
+CREATE TRIGGER update_updated_at
+BEFORE UPDATE ON cfp.user
+FOR EACH ROW EXECUTE PROCEDURE cfp.set_updated_at();
+
+-- permissions
 
 GRANT SELECT ON TABLE cfp.user TO cfp_user;
 

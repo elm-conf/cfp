@@ -9,9 +9,9 @@ jwt_token [cfp] 2019-03-28T12:54:53Z Brian Hicks <brian@noredink.com> # add jwt 
 cfp_user [cfp jwt_token] 2019-03-28T13:01:46Z Brian Hicks <brian@noredink.com> # add cfp_user role
 current_user_id [jwt_token] 2019-03-28T13:06:12Z Brian Hicks <brian@noredink.com> # add current_user_id function
 current_user_is_reviewer [cfp] 2019-03-28T13:13:23Z Brian Hicks <brian@noredink.com> # add current_user_is_reviewer function
-user [cfp current_user_id cfp_anonymous cfp_user] 2019-03-28T13:20:28Z Brian Hicks <brian@noredink.com> # add user table
-user_account [user cfp_private] 2019-03-28T13:29:47Z Brian Hicks <brian@noredink.com> # add table for private user account info
 pgcrypto 2019-03-28T13:38:12Z Brian Hicks <brian@noredink.com> # enable pgcrypto extension
-register [user user_account pgcrypto] 2019-03-28T13:39:35Z Brian Hicks <brian@noredink.com> # add a function to register a user
-authenticate [cfp_anonymous] 2019-03-28T18:18:11Z Brian Hicks <brian@noredink.com> # add authenticate function
 set_updated_at [cfp] 2019-03-28T19:48:01Z Brian Hicks <brian@noredink.com> # add updated_at function
+user [cfp current_user_id cfp_anonymous cfp_user set_updated_at] 2019-03-28T13:20:28Z Brian Hicks <brian@noredink.com> # add user table
+user_account [user cfp_private] 2019-03-28T13:29:47Z Brian Hicks <brian@noredink.com> # add table for private user account info
+register [user user_account pgcrypto] 2019-03-28T13:39:35Z Brian Hicks <brian@noredink.com> # add a function to register a user
+authenticate [user_account cfp_anonymous] 2019-03-28T18:18:11Z Brian Hicks <brian@noredink.com> # add authenticate function

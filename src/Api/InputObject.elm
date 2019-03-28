@@ -200,15 +200,17 @@ buildUserPatch fillOptionals =
     let
         optionals =
             fillOptionals
-                { id = Absent, name = Absent, isReviewer = Absent }
+                { id = Absent, name = Absent, isReviewer = Absent, createdAt = Absent, updatedAt = Absent }
     in
-    { id = optionals.id, name = optionals.name, isReviewer = optionals.isReviewer }
+    { id = optionals.id, name = optionals.name, isReviewer = optionals.isReviewer, createdAt = optionals.createdAt, updatedAt = optionals.updatedAt }
 
 
 type alias UserPatchOptionalFields =
     { id : OptionalArgument Int
     , name : OptionalArgument String
     , isReviewer : OptionalArgument Bool
+    , createdAt : OptionalArgument Api.ScalarCodecs.Datetime
+    , updatedAt : OptionalArgument Api.ScalarCodecs.Datetime
     }
 
 
@@ -218,6 +220,8 @@ type alias UserPatch =
     { id : OptionalArgument Int
     , name : OptionalArgument String
     , isReviewer : OptionalArgument Bool
+    , createdAt : OptionalArgument Api.ScalarCodecs.Datetime
+    , updatedAt : OptionalArgument Api.ScalarCodecs.Datetime
     }
 
 
@@ -226,4 +230,4 @@ type alias UserPatch =
 encodeUserPatch : UserPatch -> Value
 encodeUserPatch input =
     Encode.maybeObject
-        [ ( "id", Encode.int |> Encode.optional input.id ), ( "name", Encode.string |> Encode.optional input.name ), ( "isReviewer", Encode.bool |> Encode.optional input.isReviewer ) ]
+        [ ( "id", Encode.int |> Encode.optional input.id ), ( "name", Encode.string |> Encode.optional input.name ), ( "isReviewer", Encode.bool |> Encode.optional input.isReviewer ), ( "createdAt", (Api.ScalarCodecs.codecs |> Api.Scalar.unwrapEncoder .codecDatetime) |> Encode.optional input.createdAt ), ( "updatedAt", (Api.ScalarCodecs.codecs |> Api.Scalar.unwrapEncoder .codecDatetime) |> Encode.optional input.updatedAt ) ]

@@ -2,7 +2,7 @@
 -- https://github.com/dillonkearns/elm-graphql
 
 
-module Api.Object.User exposing (id, isReviewer, name, nodeId)
+module Api.Object.User exposing (createdAt, id, isReviewer, name, nodeId, updatedAt)
 
 import Api.InputObject
 import Api.Interface
@@ -39,3 +39,13 @@ name =
 isReviewer : SelectionSet Bool Api.Object.User
 isReviewer =
     Object.selectionForField "Bool" "isReviewer" [] Decode.bool
+
+
+createdAt : SelectionSet Api.ScalarCodecs.Datetime Api.Object.User
+createdAt =
+    Object.selectionForField "ScalarCodecs.Datetime" "createdAt" [] (Api.ScalarCodecs.codecs |> Api.Scalar.unwrapCodecs |> .codecDatetime |> .decoder)
+
+
+updatedAt : SelectionSet Api.ScalarCodecs.Datetime Api.Object.User
+updatedAt =
+    Object.selectionForField "ScalarCodecs.Datetime" "updatedAt" [] (Api.ScalarCodecs.codecs |> Api.Scalar.unwrapCodecs |> .codecDatetime |> .decoder)
