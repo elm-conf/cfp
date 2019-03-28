@@ -2,7 +2,7 @@
 -- https://github.com/dillonkearns/elm-graphql
 
 
-module Api.InputObject exposing (CreateUserInput, CreateUserInputOptionalFields, CreateUserInputRequiredFields, CurrentUserIdInput, CurrentUserIdInputOptionalFields, CurrentUserIsReviewerInput, CurrentUserIsReviewerInputOptionalFields, DeleteUserByIdInput, DeleteUserByIdInputOptionalFields, DeleteUserByIdInputRequiredFields, DeleteUserInput, DeleteUserInputOptionalFields, DeleteUserInputRequiredFields, RegisterInput, RegisterInputOptionalFields, RegisterInputRequiredFields, UpdateUserByIdInput, UpdateUserByIdInputOptionalFields, UpdateUserByIdInputRequiredFields, UpdateUserInput, UpdateUserInputOptionalFields, UpdateUserInputRequiredFields, UserCondition, UserConditionOptionalFields, UserInput, UserInputOptionalFields, UserInputRequiredFields, UserPatch, UserPatchOptionalFields, buildCreateUserInput, buildCurrentUserIdInput, buildCurrentUserIsReviewerInput, buildDeleteUserByIdInput, buildDeleteUserInput, buildRegisterInput, buildUpdateUserByIdInput, buildUpdateUserInput, buildUserCondition, buildUserInput, buildUserPatch, encodeCreateUserInput, encodeCurrentUserIdInput, encodeCurrentUserIsReviewerInput, encodeDeleteUserByIdInput, encodeDeleteUserInput, encodeRegisterInput, encodeUpdateUserByIdInput, encodeUpdateUserInput, encodeUserCondition, encodeUserInput, encodeUserPatch)
+module Api.InputObject exposing (CreateUserInput, CreateUserInputOptionalFields, CreateUserInputRequiredFields, CurrentUserIsReviewerInput, CurrentUserIsReviewerInputOptionalFields, DeleteUserByIdInput, DeleteUserByIdInputOptionalFields, DeleteUserByIdInputRequiredFields, DeleteUserInput, DeleteUserInputOptionalFields, DeleteUserInputRequiredFields, RegisterInput, RegisterInputOptionalFields, RegisterInputRequiredFields, UpdateUserByIdInput, UpdateUserByIdInputOptionalFields, UpdateUserByIdInputRequiredFields, UpdateUserInput, UpdateUserInputOptionalFields, UpdateUserInputRequiredFields, UserCondition, UserConditionOptionalFields, UserInput, UserInputOptionalFields, UserInputRequiredFields, UserPatch, UserPatchOptionalFields, buildCreateUserInput, buildCurrentUserIsReviewerInput, buildDeleteUserByIdInput, buildDeleteUserInput, buildRegisterInput, buildUpdateUserByIdInput, buildUpdateUserInput, buildUserCondition, buildUserInput, buildUserPatch, encodeCreateUserInput, encodeCurrentUserIsReviewerInput, encodeDeleteUserByIdInput, encodeDeleteUserInput, encodeRegisterInput, encodeUpdateUserByIdInput, encodeUpdateUserInput, encodeUserCondition, encodeUserInput, encodeUserPatch)
 
 import Api.Interface
 import Api.Object
@@ -49,34 +49,6 @@ encodeCreateUserInput : CreateUserInput -> Value
 encodeCreateUserInput input =
     Encode.maybeObject
         [ ( "clientMutationId", Encode.string |> Encode.optional input.clientMutationId ), ( "user", encodeUserInput input.user |> Just ) ]
-
-
-buildCurrentUserIdInput : (CurrentUserIdInputOptionalFields -> CurrentUserIdInputOptionalFields) -> CurrentUserIdInput
-buildCurrentUserIdInput fillOptionals =
-    let
-        optionals =
-            fillOptionals
-                { clientMutationId = Absent }
-    in
-    { clientMutationId = optionals.clientMutationId }
-
-
-type alias CurrentUserIdInputOptionalFields =
-    { clientMutationId : OptionalArgument String }
-
-
-{-| Type for the CurrentUserIdInput input object.
--}
-type alias CurrentUserIdInput =
-    { clientMutationId : OptionalArgument String }
-
-
-{-| Encode a CurrentUserIdInput into a value that can be used as an argument.
--}
-encodeCurrentUserIdInput : CurrentUserIdInput -> Value
-encodeCurrentUserIdInput input =
-    Encode.maybeObject
-        [ ( "clientMutationId", Encode.string |> Encode.optional input.clientMutationId ) ]
 
 
 buildCurrentUserIsReviewerInput : (CurrentUserIsReviewerInputOptionalFields -> CurrentUserIsReviewerInputOptionalFields) -> CurrentUserIsReviewerInput

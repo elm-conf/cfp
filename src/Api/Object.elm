@@ -2,15 +2,11 @@
 -- https://github.com/dillonkearns/elm-graphql
 
 
-module Api.Object exposing (CreateUserPayload(..), CurrentUserIdPayload(..), CurrentUserIsReviewerPayload(..), DeleteUserPayload(..), PageInfo(..), RegisterPayload(..), UpdateUserPayload(..), User(..), UsersConnection(..), UsersEdge(..))
+module Api.Object exposing (CreateUserPayload(..), CurrentUserIsReviewerPayload(..), DeleteUserPayload(..), PageInfo(..), RegisterPayload(..), UpdateUserPayload(..), User(..), UsersConnection(..), UsersEdge(..))
 
 
 type CreateUserPayload
     = CreateUserPayload
-
-
-type CurrentUserIdPayload
-    = CurrentUserIdPayload
 
 
 type CurrentUserIsReviewerPayload
