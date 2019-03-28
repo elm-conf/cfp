@@ -9,3 +9,4 @@ jwt_token [cfp] 2019-03-28T12:54:53Z Brian Hicks <brian@noredink.com> # add jwt 
 cfp_user [cfp jwt_token] 2019-03-28T13:01:46Z Brian Hicks <brian@noredink.com> # add cfp_user role
 current_user_id [jwt_token] 2019-03-28T13:06:12Z Brian Hicks <brian@noredink.com> # add current_user_id function
 current_user_is_reviewer [cfp] 2019-03-28T13:13:23Z Brian Hicks <brian@noredink.com> # add current_user_is_reviewer function
+user [cfp current_user_id cfp_anonymous cfp_user] 2019-03-28T13:20:28Z Brian Hicks <brian@noredink.com> # add user table
