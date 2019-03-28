@@ -11,7 +11,6 @@ const server = postgraphile(
     ],
     dynamicJson: true,
     ignoreIndexes: false,
-    disableDefaultMutations: true,
 
     // security
     pgDefaultRole: 'cfp_anonymous',
