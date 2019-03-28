@@ -2,7 +2,7 @@
 -- https://github.com/dillonkearns/elm-graphql
 
 
-module Api.Object.User exposing (createdAt, id, isReviewer, name, nodeId, updatedAt)
+module Api.Object.User exposing (createdAt, firstTimeSpeaker, id, isReviewer, name, nodeId, speakerUnderrepresented, updatedAt)
 
 import Api.InputObject
 import Api.Interface
@@ -34,6 +34,16 @@ id =
 name : SelectionSet String Api.Object.User
 name =
     Object.selectionForField "String" "name" [] Decode.string
+
+
+firstTimeSpeaker : SelectionSet Bool Api.Object.User
+firstTimeSpeaker =
+    Object.selectionForField "Bool" "firstTimeSpeaker" [] Decode.bool
+
+
+speakerUnderrepresented : SelectionSet Bool Api.Object.User
+speakerUnderrepresented =
+    Object.selectionForField "Bool" "speakerUnderrepresented" [] Decode.bool
 
 
 isReviewer : SelectionSet Bool Api.Object.User

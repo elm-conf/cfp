@@ -10,6 +10,12 @@ BEGIN;
 CREATE TABLE cfp.user(
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
+
+  -- speaker info
+  first_time_speaker BOOL NOT NULL DEFAULT FALSE,
+  speaker_underrepresented BOOL NOT NULL DEFAULT FALSE,
+
+  -- reviewer info
   is_reviewer BOOL NOT NULL DEFAULT FALSE,
 
   created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
@@ -30,7 +36,7 @@ FOR EACH ROW EXECUTE PROCEDURE cfp.set_updated_at();
 
 GRANT SELECT ON TABLE cfp.user TO cfp_user;
 
-GRANT UPDATE (name) ON TABLE cfp.user TO cfp_user;
+GRANT UPDATE (name, first_time_speaker, speaker_underrepresented) ON TABLE cfp.user TO cfp_user;
 
 CREATE POLICY update_user ON cfp.user
           FOR update

@@ -2,7 +2,7 @@
 
 BEGIN;
 
-SELECT id, name, is_reviewer
+SELECT id, name, first_time_speaker, speaker_underrepresented, is_reviewer, created_at, updated_at
   FROM cfp.user
  WHERE FALSE;
 
