@@ -48,6 +48,6 @@ CREATE POLICY select_own_user ON cfp.user
 
 CREATE POLICY select_all_users ON cfp.user
           FOR select
-        USING (cfp.current_user_is_reviewer());
+        USING (cfp.current_user_is_reviewer() = true);
 
 COMMIT;

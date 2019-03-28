@@ -53,6 +53,6 @@ CREATE POLICY select_own_proposal ON cfp.proposal
 
 CREATE POLICY select_all_proposals ON cfp.proposal
           FOR select
-        USING (cfp.current_user_is_reviewer());
+        USING (cfp.current_user_is_reviewer() = true);
 
 COMMIT;
