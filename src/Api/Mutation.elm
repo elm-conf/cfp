@@ -2,7 +2,7 @@
 -- https://github.com/dillonkearns/elm-graphql
 
 
-module Api.Mutation exposing (AuthenticateRequiredArguments, RegisterRequiredArguments, UpdateUserByIdRequiredArguments, UpdateUserRequiredArguments, authenticate, register, updateUser, updateUserById)
+module Api.Mutation exposing (AuthenticateRequiredArguments, CreateProposalRequiredArguments, RegisterRequiredArguments, UpdateProposalByIdRequiredArguments, UpdateProposalRequiredArguments, UpdateUserByIdRequiredArguments, UpdateUserRequiredArguments, authenticate, createProposal, register, updateProposal, updateProposalById, updateUser, updateUserById)
 
 import Api.InputObject
 import Api.Interface
@@ -17,6 +17,48 @@ import Graphql.Operation exposing (RootMutation, RootQuery, RootSubscription)
 import Graphql.OptionalArgument exposing (OptionalArgument(..))
 import Graphql.SelectionSet exposing (SelectionSet)
 import Json.Decode as Decode exposing (Decoder)
+
+
+type alias CreateProposalRequiredArguments =
+    { input : Api.InputObject.CreateProposalInput }
+
+
+{-| Creates a single `Proposal`.
+
+  - input - The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+
+-}
+createProposal : CreateProposalRequiredArguments -> SelectionSet decodesTo Api.Object.CreateProposalPayload -> SelectionSet (Maybe decodesTo) RootMutation
+createProposal requiredArgs object_ =
+    Object.selectionForCompositeField "createProposal" [ Argument.required "input" requiredArgs.input Api.InputObject.encodeCreateProposalInput ] object_ (identity >> Decode.nullable)
+
+
+type alias UpdateProposalRequiredArguments =
+    { input : Api.InputObject.UpdateProposalInput }
+
+
+{-| Updates a single `Proposal` using its globally unique id and a patch.
+
+  - input - The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+
+-}
+updateProposal : UpdateProposalRequiredArguments -> SelectionSet decodesTo Api.Object.UpdateProposalPayload -> SelectionSet (Maybe decodesTo) RootMutation
+updateProposal requiredArgs object_ =
+    Object.selectionForCompositeField "updateProposal" [ Argument.required "input" requiredArgs.input Api.InputObject.encodeUpdateProposalInput ] object_ (identity >> Decode.nullable)
+
+
+type alias UpdateProposalByIdRequiredArguments =
+    { input : Api.InputObject.UpdateProposalByIdInput }
+
+
+{-| Updates a single `Proposal` using a unique key and a patch.
+
+  - input - The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+
+-}
+updateProposalById : UpdateProposalByIdRequiredArguments -> SelectionSet decodesTo Api.Object.UpdateProposalPayload -> SelectionSet (Maybe decodesTo) RootMutation
+updateProposalById requiredArgs object_ =
+    Object.selectionForCompositeField "updateProposalById" [ Argument.required "input" requiredArgs.input Api.InputObject.encodeUpdateProposalByIdInput ] object_ (identity >> Decode.nullable)
 
 
 type alias UpdateUserRequiredArguments =

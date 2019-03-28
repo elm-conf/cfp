@@ -21,6 +21,7 @@ import Json.Decode as Decode
 
 type alias Fragments decodesTo =
     { onQuery : SelectionSet decodesTo RootQuery
+    , onProposal : SelectionSet decodesTo Api.Object.Proposal
     , onUser : SelectionSet decodesTo Api.Object.User
     }
 
@@ -33,6 +34,7 @@ fragments :
 fragments selections =
     Object.exhuastiveFragmentSelection
         [ Object.buildFragment "Query" selections.onQuery
+        , Object.buildFragment "Proposal" selections.onProposal
         , Object.buildFragment "User" selections.onUser
         ]
 
@@ -43,6 +45,7 @@ update syntax to add `SelectionSet`s for the types you want to handle.
 maybeFragments : Fragments (Maybe decodesTo)
 maybeFragments =
     { onQuery = Graphql.SelectionSet.empty |> Graphql.SelectionSet.map (\_ -> Nothing)
+    , onProposal = Graphql.SelectionSet.empty |> Graphql.SelectionSet.map (\_ -> Nothing)
     , onUser = Graphql.SelectionSet.empty |> Graphql.SelectionSet.map (\_ -> Nothing)
     }
 

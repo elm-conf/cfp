@@ -2,8 +2,9 @@
 -- https://github.com/dillonkearns/elm-graphql
 
 
-module Api.Object.User exposing (createdAt, firstTimeSpeaker, id, isReviewer, name, nodeId, speakerUnderrepresented, updatedAt)
+module Api.Object.User exposing (AuthoredProposalsOptionalArguments, authoredProposals, createdAt, firstTimeSpeaker, id, isReviewer, name, nodeId, speakerUnderrepresented, updatedAt)
 
+import Api.Enum.ProposalsOrderBy
 import Api.InputObject
 import Api.Interface
 import Api.Object
@@ -59,3 +60,38 @@ createdAt =
 updatedAt : SelectionSet Api.ScalarCodecs.Datetime Api.Object.User
 updatedAt =
     Object.selectionForField "ScalarCodecs.Datetime" "updatedAt" [] (Api.ScalarCodecs.codecs |> Api.Scalar.unwrapCodecs |> .codecDatetime |> .decoder)
+
+
+type alias AuthoredProposalsOptionalArguments =
+    { first : OptionalArgument Int
+    , last : OptionalArgument Int
+    , offset : OptionalArgument Int
+    , before : OptionalArgument Api.ScalarCodecs.Cursor
+    , after : OptionalArgument Api.ScalarCodecs.Cursor
+    , orderBy : OptionalArgument (List Api.Enum.ProposalsOrderBy.ProposalsOrderBy)
+    , condition : OptionalArgument Api.InputObject.ProposalCondition
+    }
+
+
+{-| Reads and enables pagination through a set of `Proposal`.
+
+  - first - Only read the first `n` values of the set.
+  - last - Only read the last `n` values of the set.
+  - offset - Skip the first `n` values from our `after` cursor, an alternative to cursor based pagination. May not be used with `last`.
+  - before - Read all values in the set before (above) this cursor.
+  - after - Read all values in the set after (below) this cursor.
+  - orderBy - The method to use when ordering `Proposal`.
+  - condition - A condition to be used in determining which values should be returned by the collection.
+
+-}
+authoredProposals : (AuthoredProposalsOptionalArguments -> AuthoredProposalsOptionalArguments) -> SelectionSet decodesTo Api.Object.ProposalsConnection -> SelectionSet decodesTo Api.Object.User
+authoredProposals fillInOptionals object_ =
+    let
+        filledInOptionals =
+            fillInOptionals { first = Absent, last = Absent, offset = Absent, before = Absent, after = Absent, orderBy = Absent, condition = Absent }
+
+        optionalArgs =
+            [ Argument.optional "first" filledInOptionals.first Encode.int, Argument.optional "last" filledInOptionals.last Encode.int, Argument.optional "offset" filledInOptionals.offset Encode.int, Argument.optional "before" filledInOptionals.before (Api.ScalarCodecs.codecs |> Api.Scalar.unwrapEncoder .codecCursor), Argument.optional "after" filledInOptionals.after (Api.ScalarCodecs.codecs |> Api.Scalar.unwrapEncoder .codecCursor), Argument.optional "orderBy" filledInOptionals.orderBy (Encode.enum Api.Enum.ProposalsOrderBy.toString |> Encode.list), Argument.optional "condition" filledInOptionals.condition Api.InputObject.encodeProposalCondition ]
+                |> List.filterMap identity
+    in
+    Object.selectionForCompositeField "authoredProposals" optionalArgs object_ identity

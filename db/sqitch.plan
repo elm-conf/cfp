@@ -15,3 +15,4 @@ user [cfp current_user_id cfp_anonymous cfp_user set_updated_at] 2019-03-28T13:2
 user_account [user cfp_private] 2019-03-28T13:29:47Z Brian Hicks <brian@noredink.com> # add table for private user account info
 register [user user_account pgcrypto] 2019-03-28T13:39:35Z Brian Hicks <brian@noredink.com> # add a function to register a user
 authenticate [user_account cfp_anonymous] 2019-03-28T18:18:11Z Brian Hicks <brian@noredink.com> # add authenticate function
+proposal [cfp cfp_user cfp_anonymous set_updated_at user] 2019-03-28T19:59:58Z Brian Hicks <brian@noredink.com> # add proposal table
