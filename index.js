@@ -4,7 +4,7 @@ const { postgraphile } = require("postgraphile");
 const inProduction = process.env.NODE_ENV;
 const server = postgraphile(
   process.env.DATABASE_URL || "postgres://postgraphile:dev@localhost/cfp",
-  process.env.SCHEMA_NAME || "cfp_public",
+  process.env.SCHEMA_NAME || "cfp",
   {
     appendPlugins: [
       require("@graphile-contrib/pg-simplify-inflector")
@@ -15,7 +15,7 @@ const server = postgraphile(
     // security
     pgDefaultRole: 'cfp_anonymous',
     jwtSecret: process.env.JWT_SECRET || 'super bad dev secret',
-    jwtPgTypeIdentifier: 'cfp_public.jwt_token',
+    jwtPgTypeIdentifier: 'cfp.jwt_token',
     ignoreRBAC: false,
 
     // development
