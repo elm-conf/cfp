@@ -9,16 +9,20 @@ const server = postgraphile(
     appendPlugins: [
       require("@graphile-contrib/pg-simplify-inflector")
     ],
+    dynamicJson: true,
+    ignoreIndexes: false,
 
     // security
     pgDefaultRole: 'cfp_anonymous',
     jwtSecret: process.env.JWT_SECRET || 'super bad dev secret',
     jwtPgTypeIdentifier: 'cfp_public.jwt_token',
+    ignoreRBAC: false,
 
     // development
     watchPg: true,
     graphiql: !inProduction,
     enhanceGraphiql: !inProduction,
+    showErrorStack: !inProduction,
 
     // logging
     disableQueryLog: inProduction,
