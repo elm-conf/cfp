@@ -2,21 +2,5 @@
 %project=cfp
 %uri=https://github.com/elm-conf/cfp
 
-cfp_public 2019-03-26T10:38:16Z Brian Hicks <brian@noredink.com> # add schema for graphile-accessible cfp objects
-uuid_ossp [cfp_public] 2019-03-26T10:48:55Z Brian Hicks <brian@noredink.com> # enable uuid-ossp
-proposals [cfp_public uuid_ossp] 2019-03-26T10:55:21Z Brian Hicks <brian@noredink.com> # add proposals table
-proposals_updated_at [proposals] 2019-03-26T11:10:11Z Brian Hicks <brian@noredink.com> # trigger updating proposals.updated_at
-cfp_private 2019-03-26T21:43:53Z Brian Hicks <brian@noredink.com> # add schema for non-graphile-accessible cfp objects
-reviewer [cfp_public] 2019-03-26T21:50:12Z Brian Hicks <brian@noredink.com> # add reviewer table
-reviewer_account [cfp_private] 2019-03-26T21:53:18Z Brian Hicks <brian@noredink.com> # add reviewer account table
-pgcrypto 2019-03-26T21:56:40Z Brian Hicks <brian@noredink.com> # enable pgcrypto extension
-register_reviewer 2019-03-26T21:59:28Z Brian Hicks <brian@noredink.com> # function to register a reviewer
-cfp_anonymous 2019-03-26T22:13:56Z Brian Hicks <brian@noredink.com> # add anonymous role
-cfp_reviewer 2019-03-27T03:14:26Z Brian Hicks <brian@noredink.com> # add reviewer role
-jwt_token [cfp_public] 2019-03-27T03:31:23Z Brian Hicks <brian@noredink.com> # add jwt token type
-authenticate [cfp_public cfp_anonymous cfp_reviewer jwt_token] 2019-03-27T03:34:40Z Brian Hicks <brian@noredink.com> # add authenticate function
-reviewer_rls [reviewer] 2019-03-27T03:46:49Z Brian Hicks <brian@noredink.com> # enable row-level security on reviewer
-uuid_ossp_permissions [uuid_ossp cfp_reviewer cfp_anonymous] 2019-03-28T00:38:20Z Brian Hicks <brian@noredink.com> # set permissions for uuid-ossp functions
-cfp_reviewer_reviewers_permissions [cfp_reviewer reviewer] 2019-03-28T01:10:23Z Brian Hicks <brian@noredink.com> # add permissions for cfp reviwer
-set_updated_at [cfp_public] 2019-03-28T01:26:54Z Brian Hicks <brian@noredink.com> # add updated_at function
-comment [cfp_public cfp_reviewer set_updated_at] 2019-03-28T01:20:19Z Brian Hicks <brian@noredink.com> # add comment table
+cfp 2019-03-28T10:50:36Z Brian Hicks <brian@noredink.com> # add public schema
+cfp_private 2019-03-28T10:57:56Z Brian Hicks <brian@noredink.com> # add private schema
