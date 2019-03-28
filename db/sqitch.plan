@@ -5,3 +5,4 @@
 cfp 2019-03-28T10:50:36Z Brian Hicks <brian@noredink.com> # add public schema
 cfp_private 2019-03-28T10:57:56Z Brian Hicks <brian@noredink.com> # add private schema
 cfp_anonymous [cfp cfp_private] 2019-03-28T11:01:22Z Brian Hicks <brian@noredink.com> # add anonymous role
+jwt_token [cfp] 2019-03-28T12:54:53Z Brian Hicks <brian@noredink.com> # add jwt token type
