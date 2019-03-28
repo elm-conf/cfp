@@ -17,3 +17,4 @@ jwt_token [cfp_public] 2019-03-27T03:31:23Z Brian Hicks <brian@noredink.com> # a
 authenticate [cfp_public cfp_anonymous cfp_reviewer jwt_token] 2019-03-27T03:34:40Z Brian Hicks <brian@noredink.com> # add authenticate function
 reviewer_rls [reviewer] 2019-03-27T03:46:49Z Brian Hicks <brian@noredink.com> # enable row-level security on reviewer
 uuid_ossp_permissions [uuid_ossp cfp_reviewer cfp_anonymous] 2019-03-28T00:38:20Z Brian Hicks <brian@noredink.com> # set permissions for uuid-ossp functions
+cfp_reviewer_reviewers_permissions [cfp_reviewer reviewer] 2019-03-28T01:10:23Z Brian Hicks <brian@noredink.com> # add permissions for cfp reviwer
