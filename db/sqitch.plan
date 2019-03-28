@@ -7,3 +7,4 @@ cfp_private 2019-03-28T10:57:56Z Brian Hicks <brian@noredink.com> # add private 
 cfp_anonymous [cfp cfp_private] 2019-03-28T11:01:22Z Brian Hicks <brian@noredink.com> # add anonymous role
 jwt_token [cfp] 2019-03-28T12:54:53Z Brian Hicks <brian@noredink.com> # add jwt token type
 cfp_user [cfp jwt_token] 2019-03-28T13:01:46Z Brian Hicks <brian@noredink.com> # add cfp_user role
+current_user_id [jwt_token] 2019-03-28T13:06:12Z Brian Hicks <brian@noredink.com> # add current_user_id function
