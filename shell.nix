@@ -24,5 +24,8 @@ in
       npm."@dillonkearns/elm-graphql-3.2.0"
       npm."@graphile-contrib/pg-simplify-inflector-3.0.0"
       npm."postgraphile-4.3.3"
+
+      # deployment
+      doctl
     ];
   }
