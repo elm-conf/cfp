@@ -58,13 +58,13 @@ let
         sha512 = "qgc8tjnDrc789rAQed8NoiFLV5VGcItA4yWNFphqGU0RcuuQngD00g3LHhWIK3HQ2XeDgVCmlNPDlqi3fWBHnQ==";
       };
     };
-    "@types/graphql-14.0.7" = {
+    "@types/graphql-14.2.0" = {
       name = "_at_types_slash_graphql";
       packageName = "@types/graphql";
-      version = "14.0.7";
+      version = "14.2.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/graphql/-/graphql-14.0.7.tgz";
-        sha512 = "BoLDjdvLQsXPZLJux3lEZANwGr3Xag56Ngy0U3y8uoRSDdeLcn43H3oBcgZlnd++iOQElBpaRVDHPzEDekyvXQ==";
+        url = "https://registry.npmjs.org/@types/graphql/-/graphql-14.2.0.tgz";
+        sha512 = "lELg5m6eBOmATWyCZl8qULEOvnPIUG6B443yXKj930glXIgwQirIBPp5rthP2amJW0YSzUg2s5sfgba4mRRCNw==";
       };
     };
     "@types/http-assert-1.4.0" = {
@@ -121,13 +121,13 @@ let
         sha512 = "FwI9gX75FgVBJ7ywgnq/P7tw+/o1GUbtP0KzbtusLigAOgIgNISRK0ZPl4qertvXSIE8YbsVJueQ90cDt9YYyw==";
       };
     };
-    "@types/node-11.12.0" = {
+    "@types/node-11.12.2" = {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "11.12.0";
+      version = "11.12.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-11.12.0.tgz";
-        sha512 = "Lg00egj78gM+4aE0Erw05cuDbvX9sLJbaaPwwRtdCdAMnIudqrQZ0oZX98Ek0yiSK/A2nubHgJfvII/rTT2Dwg==";
+        url = "https://registry.npmjs.org/@types/node/-/node-11.12.2.tgz";
+        sha512 = "c82MtnqWB/CqqK7/zit74Ob8H1dBdV7bK+BcErwtXbe0+nUGkgzq5NTDmRW/pAv2lFtmeNmW95b0zK2hxpeklg==";
       };
     };
     "@types/pg-7.4.14" = {
@@ -1516,14 +1516,14 @@ in
       sources."@types/cookies-0.7.1"
       sources."@types/express-4.16.1"
       sources."@types/express-serve-static-core-4.16.2"
-      sources."@types/graphql-14.0.7"
+      sources."@types/graphql-14.2.0"
       sources."@types/http-assert-1.4.0"
       sources."@types/jsonwebtoken-7.2.0"
       sources."@types/keygrip-1.0.1"
       sources."@types/koa-2.0.48"
       sources."@types/koa-compose-3.2.3"
       sources."@types/mime-2.0.1"
-      sources."@types/node-11.12.0"
+      sources."@types/node-11.12.2"
       sources."@types/pg-7.4.14"
       sources."@types/pg-types-1.11.4"
       sources."@types/range-parser-1.2.3"
