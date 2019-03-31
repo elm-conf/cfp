@@ -21,9 +21,7 @@ in
       # node stuff. Get exact versions by looking at npm/package.json
       nodejs-8_x
       nodePackages.node2nix
-      npm."@dillonkearns/elm-graphql-3.2.0"
-      npm."@graphile-contrib/pg-simplify-inflector-3.0.0"
-      npm."postgraphile-4.3.3"
+      nodePackages.npm
 
       # deployment
       doctl

@@ -1,5 +1,0 @@
-[
-    { "postgraphile": "4.3.3" },
-    { "@graphile-contrib/pg-simplify-inflector": "3.0.0" },
-    { "@dillonkearns/elm-graphql": "3.2.0" }
-]

@@ -1,5 +1,5 @@
-npm/default.nix: npm/package.json
-	cd npm; node2nix --nodejs-8 --input package.json
+app.nix: package.json package-lock.json
+	node2nix --lock package-lock.json --input package.json --composition $@ --nodejs-8
 
 data:
 	script/create-db.sh
