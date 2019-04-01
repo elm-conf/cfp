@@ -1,0 +1,29 @@
+{
+  "name": "cfp",
+  "version": "1.0.0",
+  "description": "CFP management for elm-conf",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elm-conf/cfp.git"
+  },
+  "author": "",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/elm-conf/cfp/issues"
+  },
+  "homepage": "https://github.com/elm-conf/cfp#readme",
+  "dependencies": {
+    "@graphile-contrib/pg-simplify-inflector": "^5.0.0-beta.1",
+    "postgraphile": "^4.3.3"
+  },
+  "devDependencies": {
+    "@dillonkearns/elm-graphql": "^3.2.0"
+  },
+  "bin": {
+    "cfp": "bin/cfp"
+  }
+}
