@@ -7,7 +7,7 @@ with import (builtins.fetchTarball rec {
 }) {};
 
 let
-  npm = callPackage ./npm { };
+  app = callPackage ./backend { };
 in
   stdenv.mkDerivation {
     name = "cfp";
@@ -18,10 +18,13 @@ in
       postgresql100
       sqitchPg
 
-      # node stuff. Get exact versions by looking at npm/package.json
-      nodejs-8_x
+      # node
       nodePackages.node2nix
       nodePackages.npm
+      nodejs-8_x
+
+      # server
+      app.package
 
       # deployment
       doctl
