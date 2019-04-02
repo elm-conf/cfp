@@ -27,7 +27,7 @@ pkgs.stdenv.mkDerivation {
   #!/usr/bin/env bash
   set -euo pipefail
   cd $out/lib/cfp-db
-  sqitch \$@
+  exec sqitch \$@
   EOF
   chmod +x $out/bin/cfp-sqitch
 
