@@ -1,6 +1,3 @@
-app.nix: package.json package-lock.json
-	node2nix --lock package-lock.json --input package.json --composition $@ --nodejs-8
-
 data:
 	script/create-db.sh
 
