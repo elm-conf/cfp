@@ -1,5 +1,5 @@
 {
-  "name": "cfp",
+  "name": "cfp-backend",
   "version": "1.0.0",
   "description": "CFP management for elm-conf",
   "main": "index.js",
@@ -24,6 +24,6 @@
     "@dillonkearns/elm-graphql": "^3.2.0"
   },
   "bin": {
-    "cfp": "bin/cfp"
+    "cfp-backend": "bin/cfp-backend"
   }
 }

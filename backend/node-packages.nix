@@ -987,8 +987,8 @@ let
     };
   };
   args = {
-    name = "cfp";
-    packageName = "cfp";
+    name = "cfp-backend";
+    packageName = "cfp-backend";
     version = "1.0.0";
     src = ./.;
     dependencies = [
