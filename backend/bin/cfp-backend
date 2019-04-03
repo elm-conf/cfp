@@ -20,7 +20,7 @@ const server = postgraphile(
     ignoreRBAC: false,
 
     // development
-    watchPg: true,
+    watchPg: !inProduction,
     graphiql: !inProduction,
     enhanceGraphiql: !inProduction,
     showErrorStack: !inProduction,
