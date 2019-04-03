@@ -18,7 +18,6 @@ in
     installPhase = ''
     mkdir -p $out/bin
 
-    ln -s ${db}/bin/cfp-db-init $out/bin/cfp-db-init
     ln -s ${db}/bin/cfp-sqitch $out/bin/cfp-sqitch
     ln -s ${backend}/bin/cfp-backend $out/bin/cfp-backend
     '';
