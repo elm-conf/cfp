@@ -26,3 +26,4 @@ proposal_policy_author_id [proposal] 2019-04-04T13:11:13Z Brian Hicks <brian@nor
 @2.1.0 2019-04-04T13:14:19Z Brian Hicks <brian@noredink.com> # fix proposal permissions
 
 proposal_select [proposal] 2019-04-04T20:15:36Z Brian Hicks <brian@noredink.com> # actually allow cfp_user to select
+@2.2.0 2019-04-04T20:19:34Z Brian Hicks <brian@noredink.com> # fix proposal permissions
