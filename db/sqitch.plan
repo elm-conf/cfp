@@ -17,5 +17,8 @@ register [user user_account pgcrypto] 2019-03-28T13:39:35Z Brian Hicks <brian@no
 authenticate [user_account cfp_anonymous] 2019-03-28T18:18:11Z Brian Hicks <brian@noredink.com> # add authenticate function
 proposal [cfp cfp_user cfp_anonymous set_updated_at user] 2019-03-28T19:59:58Z Brian Hicks <brian@noredink.com> # add proposal table
 @1.0.0 2019-04-04T10:15:16Z Brian Hicks <brian@noredink.com> # first deployed version
+
 register [register@1.0.0] 2019-04-04T10:16:50Z Brian Hicks <brian@noredink.com> # make register return a jwt_token
 @2.0.0 2019-04-04T10:34:11Z Brian Hicks <brian@noredink.com> # fix register function type
+
+proposal_create [proposal] 2019-04-04T13:07:34Z Brian Hicks <brian@noredink.com> # add create permissions for proposals
