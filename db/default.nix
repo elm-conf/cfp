@@ -5,7 +5,7 @@
 
 pkgs.stdenv.mkDerivation {
   name = "cfp-db";
-  version = "1.0.0";
+  version = "2.1.0";
 
   src = ./.;
 
