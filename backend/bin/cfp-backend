@@ -32,6 +32,13 @@ const server = postgraphile(
     // up needing this, we should set it back to "both" (the default)
     simpleCollections: 'only',
 
+    // plugin configuration
+    graphileBuildOptions: {
+      // breaks relay pagination in favor of simple collections even more than
+      // `simpleCollections: 'only'`.
+      pgOmitListSuffix: true
+    }
+
     // TODO: errors. There are nice options here: https://www.graphile.org/postgraphile/usage-library/
   }
 );
