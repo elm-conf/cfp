@@ -28,6 +28,10 @@ const server = postgraphile(
     // logging
     disableQueryLog: inProduction,
 
+    // use only simple collections. This turns off relay pagination. If we end
+    // up needing this, we should set it back to "both" (the default)
+    simpleCollections: 'only',
+
     // TODO: errors. There are nice options here: https://www.graphile.org/postgraphile/usage-library/
   }
 );
