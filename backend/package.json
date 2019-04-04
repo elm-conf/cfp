@@ -1,6 +1,6 @@
 {
   "name": "cfp-backend",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "CFP management for elm-conf",
   "main": "index.js",
   "scripts": {

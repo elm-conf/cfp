@@ -989,7 +989,7 @@ let
   args = {
     name = "cfp-backend";
     packageName = "cfp-backend";
-    version = "1.0.0";
+    version = "2.0.0";
     src = ./.;
     dependencies = [
       sources."@graphile-contrib/pg-simplify-inflector-5.0.0-beta.1"
