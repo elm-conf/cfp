@@ -11,7 +11,7 @@ CREATE FUNCTION cfp.register(
   name text,
   email text,
   password text
-) RETURNS cfp.jwt_token AS $$
+) RETURNS cfp.user AS $$
 DECLARE
   new_user cfp.user;
 BEGIN
@@ -23,7 +23,7 @@ BEGIN
   INSERT INTO cfp_private.user_account (user_id, email, password_hash)
        VALUES (new_user.id, email, crypt(password, gen_salt('bf')));
 
-  RETURN ('cfp_user', new_user.id, new_user.is_reviewer)::cfp.jwt_token;
+  RETURN new_user;
 END
 $$ LANGUAGE plpgsql STRICT SECURITY DEFINER;
 
