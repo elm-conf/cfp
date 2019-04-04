@@ -18,3 +18,4 @@ authenticate [user_account cfp_anonymous] 2019-03-28T18:18:11Z Brian Hicks <bria
 proposal [cfp cfp_user cfp_anonymous set_updated_at user] 2019-03-28T19:59:58Z Brian Hicks <brian@noredink.com> # add proposal table
 @1.0.0 2019-04-04T10:15:16Z Brian Hicks <brian@noredink.com> # first deployed version
 register [register@1.0.0] 2019-04-04T10:16:50Z Brian Hicks <brian@noredink.com> # make register return a jwt_token
+@2.0.0 2019-04-04T10:34:11Z Brian Hicks <brian@noredink.com> # fix register function type
