@@ -29,3 +29,4 @@ proposal_select [proposal] 2019-04-04T20:15:36Z Brian Hicks <brian@noredink.com>
 @2.2.0 2019-04-04T20:19:34Z Brian Hicks <brian@noredink.com> # fix proposal permissions
 
 proposal_grant_id_seq [proposal cfp_user] 2019-04-05T01:53:40Z Brian Hicks <brian@noredink.com> # add permissions for proposal_id_seq
+@2.2.1 2019-04-05T01:58:06Z Brian Hicks <brian@noredink.com> # fix proposal_id_seq
