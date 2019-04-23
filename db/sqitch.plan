@@ -32,3 +32,4 @@ proposal_grant_id_seq [proposal cfp_user] 2019-04-05T01:53:40Z Brian Hicks <bria
 @2.2.1 2019-04-05T01:58:06Z Brian Hicks <brian@noredink.com> # fix proposal_id_seq
 
 add_proposal_status [proposal] 2019-04-23T20:40:44Z Brian Hicks <brian@noredink.com> # add proposal status enum and field
+@2.3.0 2019-04-23T20:49:45Z Brian Hicks <brian@noredink.com> # add proposal status
